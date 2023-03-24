@@ -1,0 +1,17 @@
+<launch>
+
+    <!-- TurtleBot3 Gazebo -->
+    <include file="$(find fdplannerw)/launch/flat/flat.launch" />
+
+    <!-- SLAM and Navigation -->
+    <include file="$(find fdplannerw)/launch/slam.launch" />
+
+    <!-- Autonomous Planner -->
+    <include file="$(find fdplannerw)/launch/autonomous_explorer.launch">
+        <arg name="maxTime" value="900"/>
+    </include>
+
+    <!-- <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -o $(find fdplannerw)/Experiments/Flat/FDPWSP/FDPWSP
+    /map /clock /computedPath /odom /pose /scan /tf /countArea /computationTime"/> -->
+
+</launch>

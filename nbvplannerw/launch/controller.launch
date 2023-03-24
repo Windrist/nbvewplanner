@@ -1,0 +1,21 @@
+<launch>
+    <!-- Controller Nodes -->
+    <node pkg="nbvplannerw" type="nbvplannerwController" name="nbvplannerwController" output="log">
+        <param name="publish_tf" value="true"/>
+    </node>
+    <!-- <node pkg="nbvplannerw" type="TFNode" name="TFNode" output="screen" /> -->
+    <node pkg="nbvplannerw" type="mainCAN.py" name="mainControl" output="screen" />
+
+    <node pkg="urg_node" type="urg_node" name="urg_node" output="screen">
+        <param name="ip_address" value="192.168.0.10" />
+        <param name="frame_id" value="laser" />
+        <param name="calibrate_time" value="false" />
+        <param name="publish_intensity" value="false" />
+        <param name="publish_multiecho" value="false" />
+        <param name="angle_min" value="-1.57" />
+        <param name="angle_max" value="1.57" />
+    </node>
+
+    <include file="$(find nbvplannerw)/launch/rs_t265.launch" />
+
+</launch>
