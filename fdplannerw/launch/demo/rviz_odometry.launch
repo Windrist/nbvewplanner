@@ -4,5 +4,5 @@
 
     <!-- Rviz -->
     <node pkg="rviz" type="rviz" name="rviz" required="true"
-         args="-d $(find nbvgplannerw)/rviz/$(arg slam_methods).rviz"/>
+         args="-d $(find fdplannerw)/rviz/odometry.rviz"/>
 </launch>

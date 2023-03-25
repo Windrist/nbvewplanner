@@ -1,0 +1,20 @@
+<launch>
+    <!-- Robot Demo Description -->
+    <param name ="use_sim_time" value="true"/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find fdplannerw)/urdf/robot.urdf.xacro'" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <!-- SLAM -->
+    <include file="$(find fdplannerw)/launch/real_slam.launch" />
+
+    <node pkg="rosbag" type="play" name="player" args="--clock $(find fdplannerw)/Experiments/Odometry_Good_ex.bag"/>
+    
+    <node pkg="fdplannerw" type="visualizePath" name="visualizePath" output="screen" />
+
+    <!-- Arguments -->
+    <arg name="slam_methods" default="cartographer" doc="slam type [gmapping, cartographer, hector, karto]"/>
+
+    <!-- Rviz -->
+    <include file="$(find fdplannerw)/launch/rviz_odometry.launch" />
+
+</launch>

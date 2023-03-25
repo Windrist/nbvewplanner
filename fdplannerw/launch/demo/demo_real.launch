@@ -1,0 +1,22 @@
+<launch>
+    <!-- Robot Demo Description -->
+    <arg name="robot_namespace" default="/"/>
+    <arg name="multi_robot_name" default=""/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find fdplannerw)/urdf/robot.urdf.xacro' robot_namespace:=$(arg robot_namespace)" />
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+        <param name="tf_prefix" value="$(arg multi_robot_name)"/>
+    </node>
+    
+    <include file="$(find fdplannerw)/launch/controller.launch" />
+
+    <!-- SLAM -->
+    <include file="$(find fdplannerw)/launch/slam.launch" />
+
+    <!-- Autonomous Planner -->
+    <include file="$(find fdplannerw)/launch/autonomous_explorer.launch" />
+
+    <!-- Rosbag Record -->
+    <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -o $(find fdplannerw)/Experiments/Odometry
+    /cmd_vel /leftEncoder /rightEncoder /rpmLeft /rpmRight /odom /camera/imu /imu/data /imu/filtered /scan /tf /map /computedPath /pose /countArea /computationTime"/>
+
+</launch>
