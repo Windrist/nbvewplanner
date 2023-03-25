@@ -124,7 +124,7 @@ def sendMessages(bus, dataLeft, dataRight):
     bus.send(can.Message(arbitration_id=0x202, data=dataRight, is_extended_id=False))
 
 def main():
-    with can.interface.Bus(bustype="socketcan", channel="can0", bitrate=500000) as bus:
+    with can.interface.Bus(bustype="socketcan", channel="can0", bitrate=1000000) as bus:
         try:
             # sendStartMessages(bus)
             

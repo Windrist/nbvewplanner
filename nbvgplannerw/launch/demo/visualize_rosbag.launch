@@ -1,20 +1,20 @@
 <launch>
     <!-- Robot Demo Description -->
     <param name ="use_sim_time" value="true"/>
-    <param name="robot_description" command="$(find xacro)/xacro '$(find nbvgplannerww)/urdf/robot.urdf.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro '$(find nbvgplannerw)/urdf/robot.urdf.xacro'" />
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
     <!-- SLAM -->
-    <include file="$(find nbvgplannerww)/launch/real_slam.launch" />
+    <include file="$(find nbvgplannerw)/launch/real_slam.launch" />
 
-    <node pkg="rosbag" type="play" name="player" args="--clock $(find nbvgplannerww)/Experiments/Odometry_Good_ex.bag"/>
+    <node pkg="rosbag" type="play" name="player" args="--clock $(find nbvgplannerw)/Experiments/Odometry_Good_ex.bag"/>
     
-    <node pkg="nbvgplannerww" type="visualizePath" name="visualizePath" output="screen" />
+    <node pkg="nbvgplannerw" type="visualizePath" name="visualizePath" output="screen" />
 
     <!-- Arguments -->
     <arg name="slam_methods" default="cartographer" doc="slam type [gmapping, cartographer, hector, karto]"/>
 
     <!-- Rviz -->
-    <include file="$(find nbvgplannerww)/launch/rviz_odometry.launch" />
+    <include file="$(find nbvgplannerw)/launch/rviz_odometry.launch" />
 
 </launch>

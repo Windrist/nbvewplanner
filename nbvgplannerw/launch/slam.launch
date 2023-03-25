@@ -14,28 +14,28 @@
   <arg name="multi_robot_name" default=""/>
 
   <!-- Real Robot Description -->
-  <param name="robot_description" command="$(find xacro)/xacro '$(find nbvgplannerww)/urdf/robot.urdf.xacro' robot_namespace:=$(arg robot_namespace)" />
+  <param name="robot_description" command="$(find xacro)/xacro '$(find nbvgplannerw)/urdf/robot.urdf.xacro' robot_namespace:=$(arg robot_namespace)" />
   
   <!-- Turtlebot 3 Description -->
-  <!-- <param name="robot_description" command="$(find xacro)/xacro '$(find nbvgplannerww)/urdf/turtlebot3_burger.urdf.xacro'" /> -->
+  <!-- <param name="robot_description" command="$(find xacro)/xacro '$(find nbvgplannerw)/urdf/turtlebot3_burger.urdf.xacro'" /> -->
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
       <param name="tf_prefix" value="$(arg multi_robot_name)"/>
   </node>
 
   <!-- SLAM: Gmapping, Cartographer, Hector, Karto, Frontier_exploration, RTAB-Map -->
-  <include file="$(find nbvgplannerww)/launch/$(arg slam_methods).launch">
+  <include file="$(find nbvgplannerw)/launch/$(arg slam_methods).launch">
     <arg name="configuration_basename" value="$(arg configuration_basename)"/>
   </include>
 
   <!-- Navigation -->
-  <include file="$(find nbvgplannerww)/launch/move_base.launch">
+  <include file="$(find nbvgplannerw)/launch/move_base.launch">
     <arg name="move_forward_only" value="$(arg move_forward_only)"/>
   </include>
 
   <!-- rviz -->
   <group if="$(arg open_rviz)"> 
     <node pkg="rviz" type="rviz" name="rviz" required="true"
-          args="-d $(find nbvgplannerww)/rviz/$(arg slam_methods).rviz"/>
+          args="-d $(find nbvgplannerw)/rviz/$(arg slam_methods).rviz"/>
   </group>
 </launch>

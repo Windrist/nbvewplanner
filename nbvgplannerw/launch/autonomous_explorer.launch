@@ -1,16 +1,16 @@
 <launch>
-  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find nbvgplannerww)/resource/configuration.conf"/>
+  <env name="ROSCONSOLE_CONFIG_FILE" value="$(find nbvgplannerw)/resource/configuration.conf"/>
   <arg name="robot_namespace" default="/"/>
   <arg name="move_forward_only" default="False"/>
-  <arg name="param_file" default="$(find nbvgplannerww)/resource/exploration.yaml" />
+  <arg name="param_file" default="$(find nbvgplannerw)/resource/exploration.yaml" />
   <arg name="maxTime" default="300"/>
 
   <!-- Autonomous Explorer Node -->
-  <node pkg="nbvgplannerww" type="nbvgplannerwwNode" name="nbvgplannerww" output="screen">
+  <node pkg="nbvgplannerw" type="nbvgplannerwNode" name="nbvgplannerw" output="screen">
     <rosparam command="load" file="$(arg param_file)" />
   </node>
 
-  <node pkg="nbvgplannerww" type="nbvgplannerwwMain" name="nbvgplannerwwMain" output="screen">
+  <node pkg="nbvgplannerw" type="nbvgplannerwMain" name="nbvgplannerwMain" output="screen">
     <param name="maxTime" value="$(arg maxTime)" />
   </node>
 

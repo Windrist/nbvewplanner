@@ -311,17 +311,22 @@ namespace nbvePlanner {
                 }
             }
             else {
+                // if (checkVisibility) {
                 if (betweenStatus == CollisionDetector::CellStatus::kUnknown) {
                     double px = (double) probability / 100.0;
                     if (px > clamping_thres_min) {
                         free_gain += pow(resolution_, 2.0) * params_.igFree_ * params_.igProbabilistic_ / exp(2*(1 - 2*px));
-                        ROS_WARN("Px: %f", px);
                     }
                 }
             }
         }
 
         gain = unmapped_gain + occupied_gain + free_gain;
+
+        if (gain > params_.zero_gain_) {
+            ROS_WARN("Gain: %f; UnkGain: %f; OccGain: %f; FreeGain: %f", gain, unmapped_gain, occupied_gain, free_gain);
+            publishTreePoints(state, rviz_visual_tools::colors::GREEN);
+        }
 
         return gain;
     }

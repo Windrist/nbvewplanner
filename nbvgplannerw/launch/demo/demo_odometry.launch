@@ -2,21 +2,21 @@
     <!-- Robot Demo Description -->
     <arg name="robot_namespace" default="/"/>
     <arg name="multi_robot_name" default=""/>
-    <param name="robot_description" command="$(find xacro)/xacro '$(find nbvgplannerww)/urdf/robot.urdf.xacro' robot_namespace:=$(arg robot_namespace)" />
+    <param name="robot_description" command="$(find xacro)/xacro '$(find nbvgplannerw)/urdf/robot.urdf.xacro' robot_namespace:=$(arg robot_namespace)" />
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
         <param name="tf_prefix" value="$(arg multi_robot_name)"/>
     </node>
 
-    <include file="$(find nbvgplannerww)/launch/controller.launch" />
+    <include file="$(find nbvgplannerw)/launch/controller.launch" />
 
     <!-- SLAM -->
-    <include file="$(find nbvgplannerww)/launch/slam.launch" />
+    <include file="$(find nbvgplannerw)/launch/slam.launch" />
 
     <!-- Visualize Path -->
-    <node pkg="nbvgplannerww" type="visualizePath" name="visualizePath" output="screen" />
+    <node pkg="nbvgplannerw" type="visualizePath" name="visualizePath" output="screen" />
 
     <!-- Rosbag Record -->
-    <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -o $(find nbvgplannerww)/Experiments/Odometry
+    <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -o $(find nbvgplannerw)/Experiments/Odometry
     /cmd_vel /leftEncoder /rightEncoder /rpmLeft /rpmRight /odom /camera/imu /imu/data /imu/filtered /scan /tf /map /computedPath /pose /countArea /computationTime"/>
 
 </launch>

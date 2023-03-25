@@ -323,6 +323,12 @@ namespace nbvePlanner {
         }
 
         gain = unmapped_gain + occupied_gain + free_gain;
+        
+        if (gain > params_.zero_gain_) {
+            ROS_WARN("Gain: %f; UnkGain: %f; OccGain: %f; FreeGain: %f", gain, unmapped_gain, occupied_gain, free_gain);
+            publishTreePoints(state, rviz_visual_tools::colors::GREEN);
+        }
+
         return gain;
     }
 

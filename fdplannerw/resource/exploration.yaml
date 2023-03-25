@@ -6,8 +6,8 @@ system/map_topic: "/map"
 
 nbvep/gain/overshoot: 0.3
 nbvep/gain/probabilistic: 1.0
-nbvep/gain/free: 10.0
-nbvep/gain/occupied: 5.0
+nbvep/gain/free: 0.0
+nbvep/gain/occupied: 0.0
 nbvep/gain/unmapped: 20.0
 nbvep/gain/range: 3
 nbvep/gain/degressive_coeff: 0.5
