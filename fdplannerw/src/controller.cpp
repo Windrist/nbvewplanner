@@ -82,9 +82,12 @@ int main(int argc, char **argv) {
     drPub = nh.advertise<nav_msgs::Odometry>("/dead_reackoning", 1000);
 
     bool keyTF = false;
-    ros::param::param<bool>("/publish_tf", keyTF, false);
+    std::string ns = ros::this_node::getName();
+    if (!nh.getParam(ns + "/publish_tf", keyTF)) {
+        ROS_WARN("No TF Transformation Setup Defined. Looking for %s. Default is False.", (ns + "/publish_tf").c_str());
+    }
 
-    ros::Rate rate(100);
+    ros::Rate rate(30);
     float dElapse = ros::Duration(rate).toSec();
 
     tf::Quaternion quatTF(0.0, 0.0, 0.0, 1.0);

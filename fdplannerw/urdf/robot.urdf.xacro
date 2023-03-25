@@ -116,7 +116,7 @@
     </joint>
 
     <!-- Wheel macros -->
-    <link name="front_left_wheel">
+    <!-- <link name="front_left_wheel">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
@@ -186,7 +186,7 @@
         <axis xyz="0 1 0" />
         <limit effort="100" velocity="100"/>
         <joint_properties damping="0.0" friction="0.0"/>
-    </joint>
+    </joint> -->
 
     <!-- Caster macros -->
 	<link name="caster_left_wheel">
