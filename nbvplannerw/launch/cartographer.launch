@@ -14,7 +14,7 @@
 <launch>
   <!-- Arguments -->
   <arg name="robot_namespace" default="/"/>
-  <arg name="configuration_basename" default="lds_2d_gazebo.lua"/>
+  <arg name="configuration_basename" default="lds_2d_real.lua"/>
 
   <!-- cartographer_node -->
   <node pkg="cartographer_ros" type="cartographer_node" name="cartographer_node" 

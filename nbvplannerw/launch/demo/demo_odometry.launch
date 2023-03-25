@@ -13,7 +13,7 @@
     <include file="$(find nbvplannerw)/launch/slam.launch" />
 
     <!-- Visualize Path -->
-    <node pkg="nbvplannerw" type="visualizePath" name="visualizePath" output="screen" />
+    <node pkg="nbvplannerw" type="nbvplannerwVisualize" name="visualizePath" output="screen" />
 
     <!-- Rosbag Record -->
     <node pkg="rosbag" type="record" name="rosbag_record_diag" args="record -o $(find nbvplannerw)/Experiments/Odometry

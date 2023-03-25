@@ -151,6 +151,7 @@ add_dependencies(${PROJECT_NAME}Lib ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin
 add_executable(${PROJECT_NAME}Node src/nbvePlanner_node.cpp src/nbve.cpp src/rrt.cpp src/pe.cpp src/collision_detector.cpp src/random_double_generator.cpp)
 add_executable(${PROJECT_NAME}Main src/exploration.cpp)
 add_executable(${PROJECT_NAME}Controller src/controller.cpp)
+add_executable(${PROJECT_NAME}Visualize src/visualize_path.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -175,6 +176,9 @@ target_link_libraries(${PROJECT_NAME}Main
   ${catkin_LIBRARIES}
 )
 target_link_libraries(${PROJECT_NAME}Controller
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(${PROJECT_NAME}Visualize
   ${catkin_LIBRARIES}
 )
 

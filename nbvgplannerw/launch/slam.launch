@@ -5,7 +5,7 @@
   <arg name="slam_methods" default="cartographer" doc="slam type [gmapping, cartographer, hector, karto, frontier_exploration]"/>
   
   <!-- For Real -->
-  <arg name="configuration_basename" default="lds_2d.lua"/>
+  <arg name="configuration_basename" default="lds_2d_real.lua"/>
   <!-- For Gazebo -->
   <!-- <arg name="configuration_basename" default="lds_2d_gazebo.lua"/> -->
   
