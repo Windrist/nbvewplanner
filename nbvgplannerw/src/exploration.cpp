@@ -35,9 +35,9 @@ void mapCallback(const nav_msgs::OccupancyGrid& msg) {
     mapCountPub.publish(countVox);
     cutoffTime = ros::Time::now();
     
-    // if (ros::Time::now() - startTime >= ros::Duration(offTime)) {
-    //     ros::shutdown();
-    // }
+    if (ros::Time::now() - startTime >= ros::Duration(offTime)) {
+        ros::shutdown();
+    }
 }
 
 int main(int argc, char** argv) {

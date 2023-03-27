@@ -9,7 +9,7 @@
   <!-- For Gazebo -->
   <!-- <arg name="configuration_basename" default="lds_2d_gazebo.lua"/> -->
   
-  <arg name="open_rviz" default="true"/>
+  <arg name="open_rviz" default="false"/>
 
   <arg name="multi_robot_name" default=""/>
 

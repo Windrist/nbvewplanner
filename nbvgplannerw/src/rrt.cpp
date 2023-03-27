@@ -221,10 +221,9 @@ namespace nbvePlanner {
             newState.y() = origin.y() + direction.y();
             newState.z() = atan2(direction.y(), direction.x());
 
-            bool checkPoint = CollisionDetector::CellStatus::kFree
-            != cd_.thisPointStatusBoundingBox(Eigen::Vector2d(newState.x(), newState.y()), params_.boundingBox_);
+            CollisionDetector::CellStatus checkPoint = cd_.thisPointStatusBoundingBox(Eigen::Vector2d(newState.x(), newState.y()), params_.boundingBox_);
 
-            if (checkPoint) {
+            if (checkPoint != CollisionDetector::CellStatus::kFree) {
                 continue;
             }
             if (direction.norm() < params_.minExtensionRange_) {

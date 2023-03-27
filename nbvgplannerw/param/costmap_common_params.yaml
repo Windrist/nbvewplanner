@@ -3,7 +3,7 @@ footprint: [[-0.245, -0.24], [-0.245, 0.24], [0.335, 0.24], [0.335, -0.24]]
 map_type: costmap
 robot_base_frame: base_footprint
 update_frequency: 10.0
-publish_frequency: 10.0
+publish_frequency: 5.0
 transform_tolerance: 1.0
 
 static_layer:

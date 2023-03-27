@@ -1,7 +1,7 @@
 <launch>
     <!-- Controller Nodes -->
     <node pkg="fdplannerw" type="fdplannerwController" name="fdplannerwController" output="log">
-        <param name="publish_tf" value="true"/>
+        <param name="publish_tf" value="false"/>
     </node>
     <!-- <node pkg="fdplannerw" type="TFNode" name="TFNode" output="screen" /> -->
     <node pkg="fdplannerw" type="mainCAN.py" name="mainControl" output="screen" />

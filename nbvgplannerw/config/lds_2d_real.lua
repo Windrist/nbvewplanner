@@ -33,7 +33,7 @@ options = {
   num_point_clouds = 0,
   lookup_transform_timeout_sec = 0.2,
   submap_publish_period_sec = 0.3,
-  pose_publish_period_sec = 1e-3,
+  pose_publish_period_sec = 5e-3,
   publish_to_tf = true,
   publish_tracked_pose = true,
   trajectory_publish_period_sec = 30e-3,
@@ -70,7 +70,7 @@ POSE_GRAPH.constraint_builder.min_score = 0.85 -- Increase
 POSE_GRAPH.global_constraint_search_after_n_seconds = 10 -- Increase
 
 ---------Global/Local SLAM---------
-TRAJECTORY_BUILDER_2D.submaps.num_range_data = 10 -- Decrease
+TRAJECTORY_BUILDER_2D.submaps.num_range_data = 720 -- Decrease
 TRAJECTORY_BUILDER_2D.max_range = 5. -- Decrease
 
 -------------------------------------------------------------------------------------

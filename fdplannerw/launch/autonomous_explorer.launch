@@ -13,7 +13,6 @@
   <node pkg="fdplannerw" type="fdplannerwMain" name="fdplannerwMain" output="screen">
     <param name="maxTime" value="$(arg maxTime)" />
   </node>
-  <node pkg="fdplannerw" type="fdplannerwController" name="fdplannerwController" output="screen" />
 
   <node pkg="tf" type="static_transform_publisher" name="tf_weight" args="0 0 0 0 0 0 map weight 10" />
 

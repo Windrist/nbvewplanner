@@ -1,7 +1,7 @@
 <launch>
     <!-- Controller Nodes -->
     <node pkg="nbvgplannerw" type="nbvgplannerwController" name="nbvgplannerwController" output="log">
-        <param name="publish_tf" value="true"/>
+        <param name="publish_tf" value="false"/>
     </node>
     <!-- <node pkg="nbvgplannerw" type="TFNode" name="TFNode" output="screen" /> -->
     <node pkg="nbvgplannerw" type="mainCAN.py" name="mainControl" output="screen" />

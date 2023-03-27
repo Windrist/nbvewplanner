@@ -16,7 +16,7 @@ nbvep/gain/zero: 0.0
 nbvep/tree/extension_range: 1.5
 nbvep/tree/min_extension_range: 0.5
 nbvep/tree/exact_root: true
-nbvep/tree/initial_iterations: 10
+nbvep/tree/initial_iterations: 5
 nbvep/tree/cuttoff_iterations: 1000
 nbvep/tree/number_samples: 100
 
