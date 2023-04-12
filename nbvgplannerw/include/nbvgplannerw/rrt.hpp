@@ -26,6 +26,7 @@ namespace nbvePlanner {
                 double v_max_;
                 double dyaw_max_;
                 double dOvershoot_;
+                double dOvershootF_;
                 
                 double dt_;
                 double igProbabilistic_;
@@ -77,7 +78,7 @@ namespace nbvePlanner {
             geometry_msgs::Pose sampleGoal(Eigen::Vector3d state, std::string targetFrame);
 
             void slideMapWeight();
-            std::vector<double> calculateWeight();
+            void calculateWeight();
             void visualizeWeight();
 
             void publishNode(Node* node);
@@ -89,6 +90,7 @@ namespace nbvePlanner {
             void setParams(Params &params);
             uint32_t getCounter();
             bool gainFound();
+            bool frontierFound();
 
         private:
             nbvgplannerw::TreeMsg* kdTree_;
@@ -109,6 +111,7 @@ namespace nbvePlanner {
             double init_y_;
             double resolution_;
             bool isNeedWeightSampling_{false};
+            bool isFrontier_{false};
         
         protected:
             Params params_;

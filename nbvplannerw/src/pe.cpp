@@ -277,7 +277,7 @@ namespace nbvePlanner {
     }
 
     void PE::publishLandMarks(Eigen::Vector2d state) {
-        params_.visualizeLandMarks_->publishSphere(Eigen::Vector3d(state.x(), state.y(), 0.0), rviz_visual_tools::GREEN, rviz_visual_tools::XXXLARGE, "Landmarks");    
+        params_.visualizeLandMarks_->publishSphere(Eigen::Vector3d(state.x(), state.y(), 0.0), rviz_visual_tools::ORANGE, rviz_visual_tools::XXXLARGE, "Landmarks");    
     }
 
     void PE::publishSamples(Eigen::Vector2d state) {

@@ -100,7 +100,8 @@ namespace nbvePlanner {
         else {
             isNeedWeightSampling_ = true;
             slideMapWeight();
-            weight_ = calculateWeight();
+            calculateWeight();
+            weight_ = mapWeight_;
         }
 
         geometry_msgs::PoseWithCovarianceStamped robPos;
@@ -238,9 +239,9 @@ namespace nbvePlanner {
 
             CollisionDetector::CellStatus status = cd_.whatBetweenBoundingBox(origin, overshoot, params_.boundingBox_);
         bool checkVisibility = CollisionDetector::CellStatus::kFree == status;
-        isFrontier = CollisionDetector::CellStatus::kUnknown == status;
+        isFrontier_ = CollisionDetector::CellStatus::kUnknown == status;
 
-        if (checkVisibility || isFrontier) {
+        if (checkVisibility || isFrontier_) {
             // Create new node and insert into tree
             Node* newNode = new Node;
             newNode->state = newState;
@@ -369,7 +370,7 @@ namespace nbvePlanner {
         for (double wx = bbx_min_eigen.x(); wx <= bbx_max_eigen.x(); wx += resolution_) {
             for (double wy = bbx_min_eigen.y(); wy <= bbx_max_eigen.y(); wy += resolution_) {
                 uint32_t mx = static_cast<uint32_t>((wx - (double) weightMap_.info.origin.position.x) / resolution_);
-                uint32_t my = static_cast<uint32_t>((wy - (double) weightMap_.info.origin.position.x) / resolution_);
+                uint32_t my = static_cast<uint32_t>((wy - (double) weightMap_.info.origin.position.y) / resolution_);
                 uint32_t indx = my * weightMap_.info.width + mx;
                 if (indx < mapWeight_.size() && indx > 0) mapWeight_[indx] += 1;
             }
@@ -393,7 +394,7 @@ namespace nbvePlanner {
         return random_point;
     }
 
-    std::vector<double> RRT::calculateWeight() {
+    void RRT::calculateWeight() {
         std::vector<double> weight = std::vector<double>(mapWeight_.begin(), mapWeight_.end());
 
         for (std::size_t i = 0; i < weight.size(); i++) {
@@ -404,8 +405,6 @@ namespace nbvePlanner {
         for (std::size_t i = 0; i < weight.size(); i++) {
             weight[i] = weight[i] / sum;
         }
-
-        return weight;
     }
 
     void RRT::visualizeWeight() {
@@ -437,7 +436,7 @@ namespace nbvePlanner {
         bestGain_ = params_.zero_gain_;
         delete bestNode_;
         bestNode_ = nullptr;
-        isFrontier = false;
+        isFrontier_ = false;
 
         while (nodes_.size() > 0) {
             nodes_.pop_back();
@@ -523,6 +522,6 @@ namespace nbvePlanner {
     }
 
     bool RRT::frontierFound() {
-        return isFrontier;
+        return isFrontier_;
     }
 }  // namespace nbvePlanner
